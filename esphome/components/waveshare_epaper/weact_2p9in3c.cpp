@@ -15,7 +15,7 @@ namespace waveshare_epaper {
 
 static const char *const TAG = "weact_2.90_3c";
 
-static const uint16_t HEIGHT = 296;
+static const uint16_t HEIGHT = 250;
 static const uint16_t WIDTH = 128;
 
 // General Commands
