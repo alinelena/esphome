@@ -2546,8 +2546,8 @@ void HOT WaveshareEPaper7P3InF::display() {
   this->command(0x07);
   this->data(0xA5);
 }
-int WaveshareEPaper7P3InF::get_width_internal() { return 800; }
-int WaveshareEPaper7P3InF::get_height_internal() { return 480; }
+int WaveshareEPaper7P3InF::get_width_internal() { return 600; }
+int WaveshareEPaper7P3InF::get_height_internal() { return 448; }
 uint32_t WaveshareEPaper7P3InF::idle_timeout_() { return 35000; }
 void WaveshareEPaper7P3InF::dump_config() {
   LOG_DISPLAY("", "Waveshare E-Paper", this);
