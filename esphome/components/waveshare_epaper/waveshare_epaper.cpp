@@ -2393,97 +2393,96 @@ void WaveshareEPaper7P3InF::initialize() {
   this->reset_();
   delay(20);
   this->wait_until_idle_();
+/*
+     Reset();
+    EPD_5IN65F_BusyHigh();
+    SendCommand(0x00);
+    SendData(0xEF);
+    SendData(0x08);
 
-  // COMMAND CMDH
-  this->command(0xAA);
-  this->data(0x49);
-  this->data(0x55);
-  this->data(0x20);
-  this->data(0x08);
-  this->data(0x09);
-  this->data(0x18);
+    SendCommand(0x01);
+    SendData(0x37);
+    SendData(0x00);
+    SendData(0x23);
+    SendData(0x23);
 
-  this->command(0x01);
-  this->data(0x3F);
-  this->data(0x00);
-  this->data(0x32);
-  this->data(0x2A);
-  this->data(0x0E);
-  this->data(0x2A);
+    SendCommand(0x03);
+    SendData(0x00);
+
+    SendCommand(0x06);
+    SendData(0xC7);
+    SendData(0xC7);
+    SendData(0x1D);
+
+    SendCommand(0x30);
+    SendData(0x3C);
+
+    SendCommand(0x41);
+    SendData(0x00);
+
+    SendCommand(0x50);
+    SendData(0x37);
+
+    SendCommand(0x60);
+    SendData(0x22);
+
+    SendCommand(0x61);
+    SendData(0x02);
+    SendData(0x58);
+    SendData(0x01);
+    SendData(0xC0);
+
+    SendCommand(0xE3);
+    SendData(0xAA);
+
+    DelayMs(100);
+    SendCommand(0x50);
+    SendData(0x37);
+
+ */
+
 
   this->command(0x00);
-  this->data(0x5F);
-  this->data(0x69);
+  this->data(0x49);
+  this->data(0x08);
 
-  this->command(0x03);
+  this->command(0x01);
+  this->data(0x37);
   this->data(0x00);
-  this->data(0x54);
-  this->data(0x00);
-  this->data(0x44);
+  this->data(0x23);
+  this->data(0x23);
 
-  this->command(0x05);
-  this->data(0x40);
-  this->data(0x1F);
-  this->data(0x1F);
-  this->data(0x2C);
+    this->command(0x03);
+    this->data(0x00);
 
-  this->command(0x06);
-  this->data(0x6F);
-  this->data(0x1F);
-  this->data(0x1F);
-  this->data(0x22);
+   this->command(0x06);
+   this->data(0xC7);
+   this->data(0xC7);
+   this->data(0x1D);
 
-  this->command(0x08);
-  this->data(0x6F);
-  this->data(0x1F);
-  this->data(0x1F);
-  this->data(0x22);
 
-  // COMMAND IPC
-  this->command(0x13);
-  this->data(0x00);
-  this->data(0x04);
+    this->command(0x30);
+    this->data(0x3C);
 
-  this->command(0x30);
-  this->data(0x3C);
+   this->command(0x41);
+   this->data(0x00);
 
-  // COMMAND TSE
-  this->command(0x41);
-  this->data(0x00);
+this->command(0x50);
+this->data(0x37);
 
-  this->command(0x50);
-  this->data(0x3F);
-
-  this->command(0x60);
-  this->data(0x02);
-  this->data(0x00);
-
-  this->command(0x61);
-  this->data(0x03);
-  this->data(0x20);
-  this->data(0x01);
-  this->data(0xE0);
-
-  this->command(0x82);
-  this->data(0x1E);
-
-  this->command(0x84);
-  this->data(0x00);
-
-  // COMMAND AGID
-  this->command(0x86);
-  this->data(0x00);
+this->command(0x60);
+this->data(0x22);
+this->command(0x61);
+this->data(0x02);
+this->data(0x58);
+this->data(0x01);
+this->data(0xC0);
 
   this->command(0xE3);
-  this->data(0x2F);
-
-  // COMMAND CCSET
-  this->command(0xE0);
-  this->data(0x00);
-
-  // COMMAND TSSET
-  this->command(0xE6);
-  this->data(0x00);
+    this->data(0xAA);
+  delay(100);
+    this->command(0x50);
+    this->data(0x37);
 
   ESP_LOGI(TAG, "Display initialized successfully");
 }
@@ -2499,6 +2498,12 @@ void HOT WaveshareEPaper7P3InF::display() {
 
   // COMMAND DATA START TRANSMISSION
   ESP_LOGI(TAG, "Sending data to the display");
+    this->command(0x61);//Set Resolution setting
+    this->data(0x02);
+    this->data(0x58);
+    this->data(0x01);
+    this->data(0xC0);
+
   this->command(0x10);
   uint32_t small_buffer_length = this->get_buffer_length_() / NUM_BUFFERS;
   uint8_t byte_to_send;
@@ -2540,11 +2545,12 @@ void HOT WaveshareEPaper7P3InF::display() {
   this->command(0x02);
   this->data(0x00);
   this->wait_until_idle_();
-
+/*
   ESP_LOGI(TAG, "Set the display to deep sleep");
   ESP_LOGE(TAG, "GO TO DEEP SLEEP");
   this->command(0x07);
   this->data(0xA5);
+  */
 }
 int WaveshareEPaper7P3InF::get_width_internal() { return 600; }
 int WaveshareEPaper7P3InF::get_height_internal() { return 448; }
