@@ -36,14 +36,14 @@ static const uint8_t DISPLAY_UPDATE[] = {0x21, 0x00, 0x80};     // display updat
 // For controlling which part of the image we want to write
 static const uint8_t RAM_X_RANGE[] = {0x44, 0x00, WIDTH / 8u -1 };
 static const uint8_t RAM_Y_RANGE[] = {0x45, 0x00, 0x00, (uint8_t) HEIGHT - 1, (uint8_t) (HEIGHT >> 8)};
-static const uint8_t RAM_X_POS[] = {0x4E, 0x01};  // Always start at 0
+static const uint8_t RAM_X_POS[] = {0x4E, 0x00};  // Always start at 0
 static const uint8_t RAM_Y_POS = 0x4F;
 
 #define SEND(x) this->cmd_data(x, sizeof(x))
 
 // Basics
 
-int WeActEPaper2P9In3C::get_width_internal() { return WIDTH; }
+int WeActEPaper2P9In3C::get_width_internal() { return 122; }
 int WeActEPaper2P9In3C::get_height_internal() { return HEIGHT; }
 uint32_t WeActEPaper2P9In3C::idle_timeout_() { return 2500; }
 
