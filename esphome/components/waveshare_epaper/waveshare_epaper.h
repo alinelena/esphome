@@ -775,6 +775,10 @@ class WaveshareEPaper13P3InK : public WaveshareEPaper {
  public:
   void initialize() override;
 
+  void display() override;
+
+  void dump_config() override;
+
   void deep_sleep() override {
     // COMMAND DEEP SLEEP
     this->command(0x10);
@@ -794,9 +798,11 @@ class WeActEPaper2P9In3C : public WaveshareEPaperBWR {
   void display() override;
 
   void dump_config() override;
+
   void deep_sleep() override;
 
   void setup() override;
+
   void initialize() override;
 
  protected:
@@ -815,5 +821,6 @@ class WeActEPaper2P9In3C : public WaveshareEPaperBWR {
   uint32_t at_update_{0};
   bool is_busy_{false};
 };
+
 }  // namespace waveshare_epaper
 }  // namespace esphome
