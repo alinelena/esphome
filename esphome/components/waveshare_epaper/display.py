@@ -96,6 +96,7 @@ WaveshareEPaper2P13InV3 = waveshare_epaper_ns.class_(
 )
 WaveshareEPaper13P3InK = waveshare_epaper_ns.class_(
     "WaveshareEPaper13P3InK", WaveshareEPaper
+    )
 WeActEPaper2P9In3C = waveshare_epaper_ns.class_(
     "WeActEPaper2P9In3C", WaveshareEPaperBWR
 )
